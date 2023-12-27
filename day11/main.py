@@ -1,6 +1,7 @@
 from typing import List, Tuple
 
-galaxy = "#"
+class Constants():
+    GALAXY_SYMBOL = "#"
 
 class Galaxy():
     def __init__(self, coordinates: Tuple[int, int]):
@@ -50,16 +51,16 @@ class Matrix():
         self.galaxies = []
         for r in range(0, len(self.matrix)):
             for c in range(0, len(self.matrix[0])):
-                if self.matrix[r][c] == galaxy:
+                if self.matrix[r][c] == Constants.GALAXY_SYMBOL:
                     self.galaxies.append(Galaxy((r,c)))
 
     def expand_matrix(self):
         for i, r in enumerate(self.matrix):
-            if galaxy not in r:
+            if Constants.GALAXY_SYMBOL not in r:
                 self.rows_to_extend.append(i)
 
         for c in range(0, len(self.matrix[0])):
-            if galaxy not in [r[c] for r in self.matrix]:
+            if Constants.GALAXY_SYMBOL not in [r[c] for r in self.matrix]:
                 self.columns_to_extend.append(c)
 
     @classmethod
